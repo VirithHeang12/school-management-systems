@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('professors', function (Blueprint $table) {
-            $table->foreignId("person_id")->constrained();
-            $table->string("professor_specialty")->nullable(false);
+        Schema::create('room_types', function (Blueprint $table) {
+            $table->id("room_type_id");
+            $table->string("room_type_name")->nullable(false)->unique();
             $table->timestamps();
         });
     }
@@ -23,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('professors');
+        Schema::dropIfExists('room_types');
     }
 };

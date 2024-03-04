@@ -4,28 +4,28 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class ClassSection extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['class_time', 'prof_id', 'crs_id', 'room_id', 'semester_id'];
+    protected $fillable = ['class_time', 'professor_id', 'course_id', 'room_id', 'semester_id'];
 
-    public function professor(): hasOne
+    public function professor(): BelongsTo
     {
-        return $this->hasOne(Professor::class);
+        return $this->belongsTo(Professor::class);
     }
 
-    public function semester(): hasOne
+    public function semester(): BelongsTo
     {
-        return $this->hasOne(Semester::class);
+        return $this->belongsTo(Semester::class);
     }
 
-    public function course(): hasOne
+    public function course(): BelongsTo
     {
-        return $this->hasOne(Course::class);
+        return $this->belongsTo(Course::class);
     }
 
     public function enrolls(): hasMany
@@ -33,8 +33,8 @@ class ClassSection extends Model
         return $this->hasMany(Enroll::class);
     }
 
-    public function room(): hasOne
+    public function room(): BelongsTo
     {
-        return $this->hasOne(Room::class);
+        return $this->belongsTo(Room::class);
     }
 }

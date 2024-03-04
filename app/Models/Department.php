@@ -11,24 +11,18 @@ class Department extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['dept_name', 'prof_id'];
+    protected $fillable = ['department_name'];
     public function courses(): HasMany
     {
         return $this->hasMany(Course::class);
     }
 
-    public function professors(): hasMany
+    public function persons(): hasMany
     {
         return $this->hasMany(Professor::class);
     }
 
-    public function professor(): hasOne
-    {
-        return $this->hasOne(Professor::class);
-    }
-
-    public function students(): hasMany
-    {
-        return $this->hasMany(Student::class);
+    public function managerAssignments(): hasMany {
+        return $this->hasMany(ManagerAssignment::class);
     }
 }

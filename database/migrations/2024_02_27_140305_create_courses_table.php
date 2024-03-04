@@ -12,10 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('courses', function (Blueprint $table) {
-            $table->id("crs_id");
-            $table->string("crs_title")->nullable(false);
-            $table->foreignId("dept_id")->constrained();
-            $table->string("crs_description");
+            $table->id("course_id");
+            $table->string("course_title")->nullable(false);
+            $table->foreignId("department_id")->constrained();
+            $table->string("course_description");
+            $table->unique(['course_title', 'department_id']);
             $table->timestamps();
         });
     }

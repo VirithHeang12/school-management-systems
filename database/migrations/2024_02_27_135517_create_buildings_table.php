@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('buildings', function (Blueprint $table) {
-            $table->id("blng_id");
-            $table->string("blng_name")->nullable(false);
-            $table->string("blng_location")->nullable(false);
+            $table->id("building_id");
+            $table->string("building_name")->nullable(false)->unique();
+            $table->string("building_location")->nullable(false);
             $table->timestamps();
         });
     }

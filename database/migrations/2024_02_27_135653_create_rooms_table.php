@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('rooms', function (Blueprint $table) {
             $table->id("room_id");
-            $table->string("room_type");
-            $table->foreignId("blng_id")->constrained();
+            $table->foreignId("room_type_id")->constrained();
+            $table->foreignId("building_id")->constrained();
             $table->timestamps();
         });
     }

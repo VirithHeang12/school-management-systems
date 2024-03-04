@@ -12,9 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('departments', function (Blueprint $table) {
-            $table->id("dept_id");
-            $table->string("dept_name")->nullable(false);
-            $table->foreignId("prof_id")->constrained();
+            $table->id("department_id");
+            $table->string("department_name")->nullable(false)->unique();
             $table->timestamps();
         });
     }

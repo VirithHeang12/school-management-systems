@@ -5,10 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Enroll extends Model
+class ManagerAssignment extends Model
 {
     use HasFactory;
-
-    protected $fillable = ['class_id', 'person_id', 'enroll_date', 'enroll_grade'];
-
+    protected $fillable = ['manager_assignment_date', 'person_id', 'department_id'];
 }

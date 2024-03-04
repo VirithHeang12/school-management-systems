@@ -6,14 +6,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Semester extends Model
+class RoomType extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['semester_start_date', 'semester_end_date'];
+    protected $fillable = ['room_type_name'];
 
-    public function classSections(): hasMany
+    public function rooms(): HasMany
     {
-        return $this->hasMany(ClassSection::class);
+        return $this->hasMany(Room::class);
     }
 }
