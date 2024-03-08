@@ -12,10 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('addresses', function (Blueprint $table) {
-            $table->id("address_id");
+            $table->id();
             $table->string("city")->nullable(false);
             $table->string("district")->nullable(false);
-            $table->string("address");
+            $table->string("address")->nullable();
             $table->timestamps();
         });
     }

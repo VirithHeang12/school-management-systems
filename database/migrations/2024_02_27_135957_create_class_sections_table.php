@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('class_sections', function (Blueprint $table) {
-            $table->id("class_id");
-            $table->string("class_time");
+            $table->id();
+            $table->string("class_time")->nullable();
             $table->foreignId("course_id")->constrained();
             $table->foreignId("professor_id")->constrained();
             $table->foreignId("room_id")->constrained();

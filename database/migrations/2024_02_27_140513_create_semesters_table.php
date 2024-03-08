@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('semesters', function (Blueprint $table) {
-            $table->id("semester_id");
+            $table->id();
             $table->date("semester_start_date")->nullable(false);
             $table->date("semester_end_date")->nullable(false);
             $table->unique(['semester_start_date', 'semester_end_date']);
