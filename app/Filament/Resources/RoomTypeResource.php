@@ -34,6 +34,9 @@ class RoomTypeResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\TextColumn::make('id')
+                    ->label("ID")
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('room_type_name')
                     ->label("Type Name")
                     ->searchable(),

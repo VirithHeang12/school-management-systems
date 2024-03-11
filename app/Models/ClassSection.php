@@ -14,11 +14,11 @@ class ClassSection extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['class_time', 'professor_id', 'course_id', 'room_id', 'semester_id'];
+    protected $fillable = ['class_time', 'person_id', 'course_id', 'room_id', 'semester_id'];
 
-    public function professor(): BelongsTo
+    public function person(): BelongsTo
     {
-        return $this->belongsTo(Professor::class);
+        return $this->belongsTo(Person::class);
     }
 
     public function semester(): BelongsTo

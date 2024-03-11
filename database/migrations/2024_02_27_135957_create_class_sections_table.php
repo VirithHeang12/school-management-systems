@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string("class_time")->nullable();
             $table->foreignId("course_id")->constrained();
-            $table->foreignId("professor_id")->constrained();
+            $table->foreignId("person_id")->constrained();
             $table->foreignId("room_id")->constrained();
             $table->foreignId("semester_id")->constrained();
-            $table->unique(['professor_id', 'room_id', 'semester_id', 'course_id']);
+            $table->unique(['person_id', 'room_id', 'semester_id', 'course_id']);
             $table->timestamps();
         });
     }
