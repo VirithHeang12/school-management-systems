@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string("course_title")->nullable(false);
             $table->foreignId("department_id")->constrained();
             $table->string("course_description")->nullable();
+            $table->string("course_image")->nullable(false);
             $table->unique(['course_title', 'department_id']);
             $table->timestamps();
         });

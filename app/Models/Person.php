@@ -15,7 +15,7 @@ class Person extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['person_first_name', 'person_last_name', 'person_email', 'person_is_professor', 'department_id', 'address_id', 'person_date_of_birth', 'person_profile'];
+    protected $fillable = ['person_first_name', 'person_last_name', 'person_email', 'person_is_professor', 'department_id', 'address_id', 'person_date_of_birth', 'person_profile', 'user_id'];
 
     public function address(): BelongsTo
     {
@@ -30,5 +30,10 @@ class Person extends Model
     public function enrolls(): hasMany
     {
         return $this->hasMany(Enroll::class);
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
     }
 }

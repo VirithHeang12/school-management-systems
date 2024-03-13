@@ -28,6 +28,12 @@ class ProfessorResource extends Resource
                     ->required()
                     ->maxLength(191)
                     ->label("Email"),
+                Forms\Components\TextInput::make('password')
+                    ->password()
+                    ->required()
+                    ->maxLength(191)
+                    ->minLength(8)
+                    ->label("Password"),
                 Forms\Components\TextInput::make('person_first_name')
                     ->required()
                     ->maxLength(191)

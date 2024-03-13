@@ -36,6 +36,9 @@ class CourseResource extends Resource
                     ->maxLength(191)
                     ->label("Description")
                     ->required(),
+                Forms\Components\FileUpload::make('course_image')
+                    ->label("Image")
+                    ->required(),
             ]);
     }
 
@@ -56,6 +59,8 @@ class CourseResource extends Resource
                 Tables\Columns\TextColumn::make('course_description')
                     ->label("Description")
                     ->searchable(),
+                Tables\Columns\ImageColumn::make('course_image')
+                    ->circular(),
             ])
             ->filters([
                 //

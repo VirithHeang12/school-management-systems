@@ -35,6 +35,12 @@ class PersonResource extends Resource
                     ->required()
                     ->maxLength(191)
                     ->label("Email"),
+                Forms\Components\TextInput::make('password')
+                    ->password()
+                    ->required()
+                    ->maxLength(191)
+                    ->minLength(8)
+                    ->label("Password"),
                 Forms\Components\TextInput::make('person_first_name')
                     ->required()
                     ->maxLength(191)
@@ -87,8 +93,7 @@ class PersonResource extends Resource
                     ->label("Date of Birth"),
                 Tables\Columns\ImageColumn::make('person_profile')
                     ->placeholder("No Profile")
-                    ->circular()
-                    ->searchable(),
+                    ->circular(),
                 Tables\Columns\TextColumn::make('department.department_name')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('address.city')

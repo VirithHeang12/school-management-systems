@@ -9,6 +9,15 @@ use Filament\Resources\Pages\EditRecord;
 class EditRoomType extends EditRecord
 {
     protected static string $resource = RoomTypeResource::class;
+    protected function getRedirectUrl(): ?string
+    {
+        return $this->getResource()::getUrl('index');
+    }
+
+    protected function getSavedNotificationTitle(): ?string
+    {
+        return 'Room type updated';
+    }
 
     protected function getHeaderActions(): array
     {
