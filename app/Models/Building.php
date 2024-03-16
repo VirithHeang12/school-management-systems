@@ -13,7 +13,7 @@ class Building extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['building_name', 'building_location'];
+    protected $fillable = ['building_name', 'building_location', 'building_image'];
 
     public function rooms(): hasMany
     {

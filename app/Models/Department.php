@@ -14,7 +14,7 @@ class Department extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['department_name'];
+    protected $fillable = ['department_name', 'department_image'];
     public function courses(): HasMany
     {
         return $this->hasMany(Course::class);

@@ -23,9 +23,15 @@ class ProfessorResource extends Resource
     {
         return $form
             ->schema([
+                Forms\Components\TextInput::make('person_id')
+                    ->numeric()
+                    ->label("ID")
+                    ->readOnly()
+                    ->hiddenOn('create'),
                 Forms\Components\TextInput::make('person_email')
                     ->email()
                     ->required()
+                    ->readOnlyOn('edit')
                     ->maxLength(191)
                     ->label("Email"),
                 Forms\Components\TextInput::make('password')
@@ -66,6 +72,7 @@ class ProfessorResource extends Resource
                     ->required()
                     ->maxLength(191)
                     ->label("District"),
+
             ]);
     }
 

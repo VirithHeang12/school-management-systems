@@ -25,6 +25,9 @@ class DepartmentResource extends Resource
                 Forms\Components\TextInput::make('department_name')
                     ->required()
                     ->maxLength(191),
+                Forms\Components\FileUpload::make('department_image')
+                    ->required()
+                    ->label("Department Image"),
             ]);
     }
 
@@ -34,6 +37,9 @@ class DepartmentResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('department_name')
                     ->searchable(),
+                Tables\Columns\ImageColumn::make('department_image')
+                    ->placeholder("No Image")
+                    ->circular(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

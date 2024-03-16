@@ -21,4 +21,8 @@ class Enroll extends Model
         return $this->belongsTo(Person::class);
     }
 
+    public function classSection(): BelongsTo
+    {
+        return $this->belongsTo(ClassSection::class);
+    }
 }

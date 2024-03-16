@@ -37,7 +37,8 @@ class CreateProfessor extends CreateRecord
         User::create([
             'name' => $data['person_last_name'],
             'email' => $data['person_email'],
-            'password' => Hash::make($data['password'])
+            'password' => Hash::make($data['password']),
+            'role' => 'TEACHER'
         ]);
         $data['user_id'] = User::latest()->limit(1)->get()[0]->id;
 

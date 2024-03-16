@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('enrolls', function (Blueprint $table) {
             $table->id();
             $table->foreignId("class_id")->constrained();
-            $table->foreignId("student_id")->constrained();
+            $table->foreignId("person_id")->constrained();
             $table->date("enroll_date")->nullable(false);
             $table->char("enroll_grade")->nullable();
-            $table->unique(['class_id', 'student_id']);
+            $table->unique(['class_id', 'person_id']);
             $table->timestamps();
         });
     }

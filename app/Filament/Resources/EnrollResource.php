@@ -28,12 +28,12 @@ class EnrollResource extends Resource
         return $form
             ->schema([
                 Forms\Components\Select::make('class_id')
-                    ->options(ClassSection::all()->pluck('id'))
+                    ->options(ClassSection::all()->pluck('id', 'id'))
                     ->label("Class")
                     ->searchable()
                     ->required(),
-                Forms\Components\Select::make('student_id')
-                    ->options(Person::all()->pluck('id'))
+                Forms\Components\Select::make('person_id')
+                    ->options(Person::all()->where('person_is_professor', 0)->pluck('person_email', 'id'))
                     ->label("Student")
                     ->searchable()
                     ->required(),
@@ -56,6 +56,10 @@ class EnrollResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\TextColumn::make('id')
+                    ->numeric()
+                    ->label("Enroll")
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('class_id')
                     ->numeric()
                     ->label("Class")

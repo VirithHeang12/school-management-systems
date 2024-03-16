@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Group 1 - Courses</title>
+    <title>Group 1 - Enrollment</title>
 
     <!-- Fonts -->
     <link href="//fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -21,10 +21,10 @@
 <section class="inner-banner py-5">
     <div class="w3l-breadcrumb py-lg-5">
         <div class="container pt-4 pb-sm-4">
-            <h4 class="inner-text-title pt-5">Courses</h4>
+            <h4 class="inner-text-title pt-5">My Classes</h4>
             <ul class="breadcrumbs-custom-path">
                 <li><a href="{{ url("/home") }}">Home</a></li>
-                <li class="active"><i class="fas fa-angle-right"></i>Courses</li>
+                <li class="active"><i class="fas fa-angle-right"></i>My Classes</li>
             </ul>
         </div>
     </div>
@@ -35,26 +35,29 @@
 <div class="w3l-grids-block-5 py-5">
     <div class="container py-md-5 py-4">
         <div class="title-main text-center mx-auto mb-md-5 mb-4" style="max-width:500px;">
-            <p class="text-uppercase">Best Courses</p>
-            <h3 class="title-style">Find The Right Course For You</h3>
+            <p class="text-uppercase">My Classes</p>
         </div>
         <div class="row justify-content-start">
-            @foreach($courses as $course)
-                <div class="col-lg-4 col-md-6 mb-3">
-                    <div class="coursecard-single h-100">
-                        <div class="grids5-info position-relative h-50">
-                            <img src="{{ asset("storage/" . $course->course_image) }}" alt="" class="img-fluid" />
-                            <div class="meta-list">
-                                <a>{{ $course->department->department_name }}</a>
+
+                @foreach($courses as $courseDetail)
+                    <div class="col-lg-4 col-md-6 mb-3">
+                        <div class="coursecard-single h-100">
+                            <div class="grids5-info position-relative h-50">
+                                <img src="{{ asset("storage/" . $courseDetail->course_image) }}" alt="" class="img-fluid" />
+                                <div class="meta-list">
+                                    <a>{{ $courseDetail->class_time }}</a>
+                                    <a>Class ID: {{ $courseDetail->id }}</a>
+                                    <a>Room ID: {{ $courseDetail->room_id }}</a>
+                                </div>
+                            </div>
+                            <div class="content-main-top">
+                                <h4><a>{{ $courseDetail->course_title }}</a></h4>
+                                <p>{{ $courseDetail->course_description }}</p>
                             </div>
                         </div>
-                        <div class="content-main-top">
-                            <h4><a>{{ $course->course_title }}</a></h4>
-                            <p>{{ $course->course_description }}</p>
-                        </div>
                     </div>
-                </div>
-            @endforeach
+                @endforeach
+
         </div>
     </div>
 </div>

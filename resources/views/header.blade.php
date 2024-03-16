@@ -12,24 +12,55 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarScroll">
                 <ul class="navbar-nav ms-auto my-2 my-lg-0 navbar-nav-scroll">
-                    <li class="nav-item">
-                        <a href="{{ url("/home") }}" class="nav-link active" aria-current="page">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ url("/courses") }}" class="nav-link">Courses</a>
-                    </li>
-                    @auth
-                    <li class="nav-item">
-                        <a href="{{ url("/") }}" class="nav-link">My Courses</a>
-                    </li>
-                    @else
-                    @endauth
-                    @auth
+                    @if(auth()->user()?->role != 'ADMIN')
                         <li class="nav-item">
-                            <a href="{{ route('profile.edit') }}" class="nav-link">User Profile</a>
+                            <a href="{{ url("/home") }}" class="nav-link active" aria-current="page">Home</a>
                         </li>
+
+                        <li class="nav-item">
+                            <a href="{{ url("/courses") }}" class="nav-link">Courses</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{ url("/buildings") }}" class="nav-link">Buildings</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{ url("/departments") }}" class="nav-link">Departments</a>
+                        </li>
+                    @endif
+                    @auth
+                        @if (auth()->user()->role != 'ADMIN')
+                                @if (auth()->user()->role == 'STUDENT')
+                                <li class="nav-item">
+                                    <a href="{{ url("/myEnrollment") }}" class="nav-link">My Courses</a>
+                                </li>
+                                @else
+                                    <li class="nav-item">
+                                        <a href="{{ url("/myClasses") }}" class="nav-link">My Classes</a>
+                                    </li>
+                                  @endif
+
+                        @endif
                     @else
                     @endauth
+
+                    @auth
+                        @if (auth()->user()->role != 'ADMIN')
+                            <li class="nav-item">
+                                <a href="{{ route('profile.edit') }}" class="nav-link">User Profile</a>
+                            </li>
+                        @endif
+                    @else
+                    @endauth
+                        @auth
+                            @if(auth()->user()->role == 'ADMIN')
+                                <li class="nav-item">
+                                    <a href="{{ url("/admin") }}" class="nav-link">Dashboard</a>
+                                </li>
+                            @endif
+                        @endauth
+
                     @auth
                         <li class="nav-item">
                             <form method="POST" action="{{ route('logout') }}">

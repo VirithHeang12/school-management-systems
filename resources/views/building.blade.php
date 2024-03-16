@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Group 1 - Courses</title>
+    <title>Group 1 - Building</title>
 
     <!-- Fonts -->
     <link href="//fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -21,10 +21,10 @@
 <section class="inner-banner py-5">
     <div class="w3l-breadcrumb py-lg-5">
         <div class="container pt-4 pb-sm-4">
-            <h4 class="inner-text-title pt-5">Courses</h4>
+            <h4 class="inner-text-title pt-5">Buildings</h4>
             <ul class="breadcrumbs-custom-path">
                 <li><a href="{{ url("/home") }}">Home</a></li>
-                <li class="active"><i class="fas fa-angle-right"></i>Courses</li>
+                <li class="active"><i class="fas fa-angle-right"></i>Buildings</li>
             </ul>
         </div>
     </div>
@@ -39,18 +39,18 @@
             <h3 class="title-style">Find The Right Course For You</h3>
         </div>
         <div class="row justify-content-start">
-            @foreach($courses as $course)
+            @foreach($buildings as $building)
                 <div class="col-lg-4 col-md-6 mb-3">
                     <div class="coursecard-single h-100">
                         <div class="grids5-info position-relative h-50">
-                            <img src="{{ asset("storage/" . $course->course_image) }}" alt="" class="img-fluid" />
+                            <img src="{{ asset("storage/" . $building->building_image) }}" alt="" class="img-fluid" />
                             <div class="meta-list">
-                                <a>{{ $course->department->department_name }}</a>
+                                <a>All rooms: {{ $building->room_num }}</a>
                             </div>
                         </div>
                         <div class="content-main-top">
-                            <h4><a>{{ $course->course_title }}</a></h4>
-                            <p>{{ $course->course_description }}</p>
+                            <h4><a>{{ $building->building_name }}</a></h4>
+                            <p>{{ $building->building_location }}</p>
                         </div>
                     </div>
                 </div>

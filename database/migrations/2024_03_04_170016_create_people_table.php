@@ -20,8 +20,8 @@ return new class extends Migration
             $table->date("person_date_of_birth")->nullable(false);
             $table->string("person_profile")->nullable();
             $table->foreignId("department_id")->constrained();
-            $table->foreignId("address_id")->constrained()->cascadeOnDelete();
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->foreignId("address_id")->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });
     }

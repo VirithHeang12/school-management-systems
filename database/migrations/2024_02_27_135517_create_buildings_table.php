@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string("building_name")->nullable(false)->unique();
             $table->string("building_location")->nullable(false);
+            $table->string('building_image')->nullable(false);
             $table->timestamps();
         });
     }

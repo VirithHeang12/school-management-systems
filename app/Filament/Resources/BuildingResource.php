@@ -31,6 +31,10 @@ class BuildingResource extends Resource
                     ->required()
                     ->label("Location")
                     ->maxLength(191),
+                Forms\Components\FileUpload::make('building_image')
+                    ->required()
+                    ->label("Building Image"),
+
             ]);
     }
 
@@ -47,6 +51,9 @@ class BuildingResource extends Resource
                 Tables\Columns\TextColumn::make('building_location')
                     ->label("Location")
                     ->searchable(),
+                Tables\Columns\ImageColumn::make('building_image')
+                    ->placeholder("No Image")
+                    ->circular(),
             ])
             ->filters([
                 //

@@ -33,7 +33,8 @@ class CreatePerson extends CreateRecord
         User::create([
             'name' => $data['person_last_name'],
             'email' => $data['person_email'],
-            'password' => Hash::make($data['password'])
+            'password' => Hash::make($data['password']),
+            'role' => 'STUDENT'
         ]);
         $data['person_is_professor'] = 0;
         $data['user_id'] = User::latest()->limit(1)->get()[0]->id;

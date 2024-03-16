@@ -3,6 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Filament\Models\Contracts\FilamentUser;
+use Filament\Panel;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -13,7 +15,7 @@ use Laravel\Sanctum\HasApiTokens;
 /**
  * @mixin Builder
  */
-class User extends Authenticatable
+class User extends Authenticatable implements FilamentUser
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -26,6 +28,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role'
     ];
 
     /**
@@ -51,5 +54,10 @@ class User extends Authenticatable
     public function person(): HasOne
     {
         return $this->HasOne(Person::class);
+    }
+
+    public function canAccessPanel(Panel $panel): bool
+    {
+        return $this->role == 'ADMIN';
     }
 }

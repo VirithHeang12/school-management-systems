@@ -38,7 +38,7 @@ class ClassSectionResource extends Resource
                     ->searchable()
                     ->required(),
                 Forms\Components\Select::make('person_id')
-                    ->options(Professor::all()->pluck('person_id','person_id'))
+                    ->options(Professor::all()->pluck('person.person_email','person_id'))
                     ->label("Professor")
                     ->searchable()
                     ->required(),
@@ -59,6 +59,10 @@ class ClassSectionResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\TextColumn::make('id')
+                    ->numeric()
+                    ->label('Class ID')
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('class_time')
                     ->label('Class Time')
                     ->searchable(),
